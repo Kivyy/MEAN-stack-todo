@@ -1,9 +1,12 @@
+require('./config/config');
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const {ObjectID} = require('mongodb');
 const _ = require('lodash');
 const bcrypt = require('bcryptjs');
 const app = express();
+const port = process.env.PORT;
 
 let {mongoose} = require('./db/mongoose');
 let {Todo} = require('./models/todo');
@@ -142,6 +145,6 @@ app.delete('/users/me/token',authenticate, (req,res) => {
   })
 })
 
-app.listen(3000, () => {
+app.listen(port, () => {
   console.log('Listening to port:3000');
 })
